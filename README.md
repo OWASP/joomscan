@@ -14,7 +14,7 @@ OWASP JoomScan  (short for [Joom]la Vulnerability [Scan]ner)  is an opensource p
 
 ### Why OWASP JoomScan  ?
 
-If you want to do a penetration test on a Joomla Forum, OWASP JoomScan  is Your best shot ever!
+If you want to do a penetration test on a Joomla CMS, OWASP JoomScan  is Your best shot ever!
 This Project is being faster than ever and updated with the latest Joomla vulnerabilities.
 
 
