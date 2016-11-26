@@ -1,0 +1,32 @@
+# Hardened Apache Mod_Rewrite Security Rule
+# Provided by Aung Khant,http://yehg.net/lab, Check update at http://yehg.net/lab/pr0js/misc/modrewrite-securityrule.php
+# You should try it out and remove any troubled keywords found in normal browsing
+#
+RewriteEngine on
+# Allow only GET and POST verbs
+RewriteCond %{REQUEST_METHOD} !^(GET|POST)$ [NC,OR]
+# Ban Typical Vulnerability Scanners and others
+# Kick out Script Kiddies
+RewriteCond %{HTTP_USER_AGENT} ^()$ [NC,OR] # void of UserAgent
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(libwww-perl|curl|wget|python|nikto|wkito|pikto|pykto|scan|acunetix|qualys|fuck|kiss|ass|Morfeus|0wn|hack|h4x|h4x0r).* [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^.*(winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner).* [NC,OR]
+# Block out common attack strings 
+# Anti-bypassing with star-slash, slash-star
+RewriteCond %{QUERY_STRING} ^.*(/\*|\*/).* [NC,OR]
+# Directory Travarsal & Null Byte Injection
+RewriteCond %{QUERY_STRING} (../|..%2f|..%u2215|%u002e%u002e%u2215|%252e%252e%252f|%00|\00|\x00|\u00|%5C00|&#|&#x|%09|%0D%0A) [NC,OR]
+# SQL Injection        Probing
+RewriteCond %{QUERY_STRING} ^.*(OR%201=1|/select/|/union/|/insert/|/update/|/delete/).* [NC,OR]
+# Remote/Local File Inclusion
+RewriteCond %{QUERY_STRING} (http://)*(?)$ [NC,OR]
+# PHP Version Probing
+RewriteCond %{QUERY_STRING} (?=PHP).* [NC,OR]
+# XSS Probing
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+# PHP GLOBALS Overriding
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [NC,OR]
+# PHP REQUEST variable Overriding
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+# Deny access
+RewriteRule ^(.*)$ index.php [F,L]
