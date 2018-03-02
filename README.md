@@ -53,7 +53,7 @@ or<br>
 ```perl joomscan.pl -u www.example.com```
 <br>
 <br>
-Enumerate installed components...
+Enumerate installed components...<br>
 ```perl joomscan.pl --url www.example.com --enumerate-components```<br>
 or<br>
 ```perl joomscan.pl -u www.example.com --ec```<br>
