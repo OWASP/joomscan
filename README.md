@@ -47,36 +47,36 @@ This Project is being faster than ever and updated with the latest Joomla vulner
 
 # OWASP JOOMSCAN EXAMPLES
 
-Do default checks...
-```perl joomscan.pl --url www.example.com```
-or
+Do default checks...<br>
+```perl joomscan.pl --url www.example.com```<br>
+or<br>
 ```perl joomscan.pl -u www.example.com```
-
-
+<br>
+<br>
 Enumerate installed components...
-```perl joomscan.pl --url www.example.com --enumerate-components```
-or
-```perl joomscan.pl -u www.example.com --ec```
+```perl joomscan.pl --url www.example.com --enumerate-components```<br>
+or<br>
+```perl joomscan.pl -u www.example.com --ec```<br>
+<br>
 
-
-Set cookie
+Set cookie<br>
 ```perl joomscan.pl --url www.example.com --cookie "test=demo;"```
+<br><br>
 
+Set user-agent<br>
+```perl joomscan.pl --url www.example.com --user-agent "Googlebot/2.1 (+http://www.googlebot.com/bot.html)"```<br>
+or<br>
+```perl joomscan.pl -u www.example.com -a "Googlebot/2.1 (+http://www.googlebot.com/bot.html)"```<br>
+<br><br>
 
-Set user-agent
-```perl joomscan.pl --url www.example.com --user-agent "Googlebot/2.1 (+http://www.googlebot.com/bot.html)"```
-or
-```perl joomscan.pl -u www.example.com -a "Googlebot/2.1 (+http://www.googlebot.com/bot.html)"```
+Set random user-agent<br>
+```perl joomscan.pl -u www.example.com --random-agent```<br>
+or<br>
+```perl joomscan.pl --url www.example.com -r```<br>
+<br>
 
-
-Set random user-agent
-```perl joomscan.pl -u www.example.com --random-agent```
-or
-```perl joomscan.pl --url www.example.com -r```
-
-
-Update Joomscan...
-```perl joomscan.pl --update```
+Update Joomscan...<br>
+```perl joomscan.pl --update```<br><br>
 
 
 # OWASP PAGE
