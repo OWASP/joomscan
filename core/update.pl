@@ -12,7 +12,7 @@ print "\n[+] Checking newest version\n";
 my $response = $browser->get('http://raw.githubusercontent.com/rezasp/joomscan/master/version');
 
 if($response->is_success){
-	if($response->decoded_content =~ /$version/)
+	if($response->decoded_content !~ /$version/)
 	{
 		print "\n[!] New version available on http://github.com/rezasp/joomscan \n\n";
 	}else
