@@ -33,30 +33,31 @@ use Term::ANSIColor;
 use Getopt::Long;
 use LWP::UserAgent;
 use LWP::Simple;
-
+use Cwd;                                                                       
+my  $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##; 
 
 $SIG{INT} = \&interrupt;
 sub interrupt {
     fprint("\nShutting Down , Interrupt by user");
-    do "./core/report.pl";
+    do "$mepath/core/report.pl";
     print color("reset");
     exit 0;
 }
-do "./core/header.pl";
-do "./core/main.pl";
-do "./core/ver.pl";
-do "./exploit/verexploit.pl";
-do "./modules/pathdisclure.pl";
-do "./modules/debugmode.pl";
-do "./modules/dirlisting.pl";
-do "./modules/missconfig.pl";
-do "./modules/cpfinder.pl";
-do "./modules/robots.pl";
-do "./modules/backupfinder.pl";
-do "./modules/errfinder.pl";
-do "./modules/reg.pl";
-do "./modules/configfinder.pl";
-do "./exploit/components.pl" if($components==1);
+do "$mepath/core/header.pl";
+do "$mepath/core/main.pl";
+do "$mepath/core/ver.pl";
+do "$mepath/exploit/verexploit.pl";
+do "$mepath/modules/pathdisclure.pl";
+do "$mepath/modules/debugmode.pl";
+do "$mepath/modules/dirlisting.pl";
+do "$mepath/modules/missconfig.pl";
+do "$mepath/modules/cpfinder.pl";
+do "$mepath/modules/robots.pl";
+do "$mepath/modules/backupfinder.pl";
+do "$mepath/modules/errfinder.pl";
+do "$mepath/modules/reg.pl";
+do "$mepath/modules/configfinder.pl";
+do "$mepath/exploit/components.pl" if($components==1);
 
-do "./core/report.pl";
+do "$mepath/core/report.pl";
 print color("reset");
