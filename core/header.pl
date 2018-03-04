@@ -72,7 +72,7 @@ sub about
 }
 sub update
 {
-    do "./core/update.pl";
+    do "$mepath/core/update.pl";
 	print color("reset");
 	exit(1);
 }

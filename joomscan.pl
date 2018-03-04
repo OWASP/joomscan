@@ -34,7 +34,7 @@ use Getopt::Long;
 use LWP::UserAgent;
 use LWP::Simple;
 use Cwd;                                                                       
-my  $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##; 
+$mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##; 
 
 $SIG{INT} = \&interrupt;
 sub interrupt {
