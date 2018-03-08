@@ -1,5 +1,18 @@
 #start Version finder
 dprint("Detecting Joomla Version");
+
+$ua->timeout(10);
+
+my $response = $ua->get("$target");
+if (!$response->is_success) {
+    print color("red");
+    print "[++] The target is not alive!\n\n";
+    print color("reset");
+    exit 0;
+}
+
+$ua->timeout($timeout);
+
 $source=$ua->get("$target/")->as_string;
 if($source =~ /X-Meta-Generator\:(.*?)\n/){
 $ppp=$1;
