@@ -89,7 +89,7 @@ Update Joomscan...<br>
 
 # ISSUES
 
-[https://github.com/rezasp/joomscan/issues](https://github.com/rezasp/joomscan/joomscan)
+[https://github.com/rezasp/joomscan/issues](https://github.com/rezasp/joomscan/issues)
 
 # PROJECT LEADERS
 
