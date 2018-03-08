@@ -58,6 +58,7 @@ sub dprint{
     my ($in) = @_;
     $in =~ s/\/\//\//g;
     $in =~ s/http:\//http:\/\//g;
+    $in =~ s/https:\//https:\/\//g;
     $#dlog++;
     $dlog[$#dlog]=$in;
     $in="\n[+] $in\n";
@@ -69,6 +70,7 @@ sub tprint{
     my ($in) = @_;
     $in =~ s/\/\//\//g;
     $in =~ s/http:\//http:\/\//g;
+    $in =~ s/https:\//https:\/\//g;
     $#tflog++;
     $tflog[$#tflog]=$in;
     $in="[++] $in\n";
@@ -81,6 +83,7 @@ sub fprint{
     my ($in) = @_;
     $in =~ s/\/\//\//g;
     $in =~ s/http:\//http:\/\//g;
+    $in =~ s/https:\//https:\/\//g;
     $#tflog++;
     $tflog[$#tflog]="1337false$in";
     $in="[++] $in\n";
