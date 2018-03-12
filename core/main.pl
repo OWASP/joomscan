@@ -17,11 +17,11 @@ $ua->protocols_allowed( [ 'http','https'] );
 $timeout = $timeout || 60;
 $ua->timeout($timeout);
 
-@weekday = ("Sunday", "Monday", "Tuesday", "Wednesday", "thursday", "Friday", "Saturday");
+@weekday = ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
 ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();;
 $year = $year + 1900;
 $mon += 1;
-$stime="$mday/$mon/$year $hour:$min:$sec $weekday[$wday]";
+$stime="$year-$mon-$mday $hour:$min:$sec $weekday[$wday]";
 
 
 @uagnt=('Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.5) Gecko/20060719 Firefox/1.5.0.5'
