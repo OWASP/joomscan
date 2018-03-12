@@ -8,17 +8,17 @@ my $can_regexp=1;
 eval "use Regexp::Common \"URI\"";
 if($@) { $can_regexp=0; }
 
-my $can_https=1;
-eval "use LWP::Protocol::https";
-if($@) { $can_https=0; }
-
 $ua = LWP::UserAgent->new();
 $ua->protocols_allowed( [ 'http' ] );
-if ($can_https) {
-  $ua->ssl_opts( 'verify_hostname' => 0 );
-  push @{ $ua->protocols_allowed }, 'https';
-} else {
-  if($target =~ /^https:/) {
+if($target =~ /^https:\/\//) {
+  my $can_https=1;
+  eval "use LWP::Protocol::https";
+  if($@) { $can_https=0; }
+
+  if ($can_https) {
+    $ua->ssl_opts( 'verify_hostname' => 0 );
+    push @{ $ua->protocols_allowed }, 'https';
+  } else {
     print color("red");
     print "[+] Target uses HTTPS, but module LWP::Protocol::https is not available!\n\n";
     print color("reset");
