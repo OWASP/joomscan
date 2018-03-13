@@ -52,7 +52,7 @@ if($ver !~ m/\./i){
             }elsif($source =~ /(Copyright \(C\) 2005 - 200(6|7))/ or $source =~ /47 2005\-09\-15 02\:55\:27Z rhuk/ or $source =~ /423 2005\-10\-09 18\:23\:50Z stingrey/ or $source =~ /1005 2005\-11\-13 17\:33\:59Z stingrey/ or $source =~ /1570 2005\-12\-29 05\:53\:33Z eddieajau/ or $source =~ /2368 2006\-02\-14 17\:40\:02Z stingrey/ or $source =~ /1570 2005\-12\-29 05\:53\:33Z eddieajau/ or $source =~ /4085 2006\-06\-21 16\:03\:54Z stingrey/ or $source =~ /4756 2006\-08\-25 16\:07\:11Z stingrey/ or $source =~ /5973 2006\-12\-11 01\:26\:33Z robs/ or $source =~ /5975 2006\-12\-11 01\:26\:33Z robs/){
             $ver="Joomla 1.0";
                     last;
-            }        
+            }
     }
 }
 
@@ -64,8 +64,8 @@ if($ver !~ m/\./i){
 }
 
 $ver =~ tr/[0-9][a-z][A-Z][\.]\ //cd;
-#if( $ver =~ /\d\.\d\.\d+/ and length($ver) > 25) {$ver= "Joomla $&";}  
+#if( $ver =~ /\d\.\d\.\d+/ and length($ver) > 25) {$ver= "Joomla $&";}
 
-if($ver !~ m/\./i){fprint("ver 404\n")}else{tprint("$ver");}
- 
+if($ver !~ m/\./i){$ver="";fprint("Joomla version not detected\n")}else{tprint("$ver");}
+
 #end Version finder
