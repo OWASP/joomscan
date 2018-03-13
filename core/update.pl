@@ -13,6 +13,7 @@ if (!$can_https) {
 
 my $browser = LWP::UserAgent->new;
 $browser->timeout(60);
+$browser = LWP::UserAgent->new(ssl_opts => { verify_hostname => 0 });
 $browser->protocols_allowed( [ 'http','https'] );
 
 
@@ -24,7 +25,7 @@ my $response = $browser->get('https://raw.githubusercontent.com/rezasp/joomscan/
 if($response->is_success){
 	if($response->decoded_content !~ /$version/)
 	{
-		print "\n[!] New version available on https://github.com/rezasp/joomscan\n\n";
+		print "\n[!] New version available on https://github.com/rezasp/joomscan/releases/latest\n\n";
 	}else
 	{
 		 print "\n[!] No new version available\n\n";
