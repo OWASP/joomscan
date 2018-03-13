@@ -91,7 +91,12 @@ GetOptions(
   'version' => sub { print "\n\nVersion : $version\n\n";exit; },
 
 );
-if($target !~ /\./){exit 0;}
-if($target !~ /http/) { $target = "http://$target"; };
+if($target !~ /\S/){
+  print color("red");
+  print "[+] No target specified!\n\n";
+  print color("reset");
+  exit (1);
+}
+if($target !~ /^https?:\/\//) { $target = "http://$target"; };
 
 #End help Function
