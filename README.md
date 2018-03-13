@@ -1,4 +1,4 @@
-![Version 0.0.1](https://img.shields.io/badge/Version-0.0.1-green.svg)
+![Version 0.0.5](https://img.shields.io/badge/Version-0.0.5-green.svg)
 ![perl](https://img.shields.io/badge/Perl-5.x-yellow.svg)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-red.svg)](https://github.com/rezasp/joomscan/blob/master/LICENSE.md)
 [![Twitter](https://img.shields.io/badge/Twitter-@OWASP_JoomScan-blue.svg)](http://twitter.com/OWASP_JoomScan)
@@ -98,6 +98,6 @@ Update Joomscan...<br>
 
 
 <br><br>
-OWASP JoomScan 0.0.1 introduction (Youtube)
+OWASP JoomScan introduction (Youtube)
 
-[![OWASP JoomScan 0.0.1 introduction](https://img.youtube.com/vi/Ik2CJ9LkuoI/0.jpg)](https://www.youtube.com/watch?v=Ik2CJ9LkuoI)
+[![OWASP JoomScan introduction](https://img.youtube.com/vi/Ik2CJ9LkuoI/0.jpg)](https://www.youtube.com/watch?v=Ik2CJ9LkuoI)
