@@ -2,7 +2,8 @@ package JoomScan::Logging;
 use warnings;
 use strict;
 
-our @EXPORT_OK = qw(dprint fprint tprint)
+our @EXPORT_OK = qw(dprint fprint tprint);
+
 my  (@dlog, @tflog, $log);
 $log = "";
 
@@ -44,3 +45,5 @@ sub fprint{
   print "$in";
   print color("blue");
 }
+
+1;
