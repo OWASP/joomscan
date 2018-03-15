@@ -5,7 +5,7 @@ use warnings;
 use strict;
 
 our @EXPORT_OK = qw(check_reg check_robots_txt check_path_disclosure
-		    check_missconfiguration check_error_logs
+		    check_misconfiguration check_error_logs
 		    check_dirlisting check_debug_mode
 		    check_admin_pages check_backups check_configs);
 
@@ -116,7 +116,7 @@ sub check_path_disclosure {
   }
 }
 
-sub check_missconfiguration {
+sub check_misconfiguration {
   my ($ua, $target) = @_;
   my $ctf=0;
   dprint("Checking apache info/status files");
@@ -488,8 +488,8 @@ sub check_configs{
 	$source =~ m/force_ssl/i or
 	$source =~ m/mosConfig_secret/i or
 	$source =~ m/mosConfig_dbprefix/i ) {
-      $cnftmp = "$cnftmp Readable config file is found \n config file path: ",
-	        "$target/$config\n";
+      $cnftmp = "$cnftmp Readable config file is found \n config file path: ".
+	         "$target/$config\n";
       $ctf=1;
     }
   }
