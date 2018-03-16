@@ -192,7 +192,7 @@ my $with_cyan = partial(\&print_with_color, 'cyan');
 GetOptions(
   'help|h' => partial($with_cyan, \&help),
   'update' => \&update,
-  'about' => \&about,
+  'about' => partial($with_cyan, \&about),
   'enumerate-components|ec' => \$enum_components,
   'random-agent|r'   => \$use_random_agent,
   'user-agent|a=s' => \$agent,
@@ -202,14 +202,13 @@ GetOptions(
   'version' => sub { print "\n\nVersion : $version\n\n";exit; }
 );
 
-
 banner();
 
 if(!$target){
   usage();
 }
 
-if($target !~ /http/) {
+if($target !~ /^http/) {
   $target = "http://$target";
 }
 
@@ -225,15 +224,18 @@ else{
   $ua = create_user_agent($uagnt_labels[0], $cookie);
 }
 
-JoomScan::Check::check_reg($ua, $target);
-JoomScan::Check::check_robots_txt($ua, $target);
-JoomScan::Check::check_path_disclosure($ua, $target);
-JoomScan::Check::check_misconfiguration($ua, $target);
-JoomScan::Check::check_error_logs($ua, $target);
-JoomScan::Check::check_dirlisting($ua, $target);
-JoomScan::Check::check_debug_mode($ua, $target);
-JoomScan::Check::check_admin_pages($ua, $target);
-JoomScan::Check::check_backups($ua, $target);
-JoomScan::Check::check_configs($ua, $target);
+check_reg($ua, $target);
+check_robots_txt($ua, $target);
+check_path_disclosure($ua, $target);
+check_misconfiguration($ua, $target);
+check_error_logs($ua, $target);
+check_dirlisting($ua, $target);
+check_debug_mode($ua, $target);
+check_admin_pages($ua, $target);
+check_backups($ua, $target);
+check_configs($ua, $target);
+
+
+
 
 END{ print color("reset"); }
