@@ -227,6 +227,7 @@ sub check_admin_pages {
   } else {
     fprint("Admin page not found");
   }
+  return ($amtf, $adming);
 }
 
 sub check_backups {
