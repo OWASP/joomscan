@@ -36,7 +36,7 @@ use JoomScan::Check qw(check_reg check_robots_txt check_path_disclosure
 		    check_dirlisting check_debug_mode
 		    check_admin_pages check_backups check_configs);
 
-my $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##; 
+my $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##;
 
 
 $SIG{INT} = \&interrupt;
