@@ -108,9 +108,9 @@ sub partial {
 sub banner {
   print color("YELLOW");
   print q{
-    ____  _____  _____  __  __  ___   ___    __    _  _ 
+    ____  _____  _____  __  __  ___   ___    __    _  _
    (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
-  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  ( 
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  (
   \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
 };
   print color("red") . "\t\t\t(1337.today)" . color("reset");
@@ -210,7 +210,7 @@ if(!$target){
 }
 
 if($target !~ /http/) {
-  $target = "http://$target"; 
+  $target = "http://$target";
 }
 
 my $ua;
@@ -225,7 +225,6 @@ else{
   $ua = create_user_agent($uagnt_labels[0], $cookie);
 }
 
-__DATA__
 JoomScan::Check::check_reg($ua, $target);
 JoomScan::Check::check_robots_txt($ua, $target);
 JoomScan::Check::check_path_disclosure($ua, $target);

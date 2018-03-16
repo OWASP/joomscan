@@ -1,7 +1,9 @@
 package JoomScan::Logging;
 use warnings;
 use strict;
+use Exporter;
 
+our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(dprint fprint tprint);
 
 my  (@dlog, @tflog, $log);

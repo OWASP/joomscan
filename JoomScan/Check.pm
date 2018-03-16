@@ -1,9 +1,10 @@
 package JoomScan::Check;
-use JoomScan::Logging qw(dprint tprint fprint);
-
 use warnings;
 use strict;
+use Exporter;
+use JoomScan::Logging qw(dprint tprint fprint);
 
+our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(check_reg check_robots_txt check_path_disclosure
 		    check_misconfiguration check_error_logs
 		    check_dirlisting check_debug_mode
