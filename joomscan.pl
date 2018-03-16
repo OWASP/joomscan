@@ -36,6 +36,7 @@ use JoomScan::Check qw(check_reg check_robots_txt check_path_disclosure
 		    check_dirlisting check_debug_mode
 		    check_admin_pages check_backups check_configs);
 
+use JoomScan::VulnDB qw(check_components);
 my $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##;
 
 
@@ -231,10 +232,12 @@ check_misconfiguration($ua, $target);
 check_error_logs($ua, $target);
 check_dirlisting($ua, $target);
 check_debug_mode($ua, $target);
-check_admin_pages($ua, $target);
 check_backups($ua, $target);
 check_configs($ua, $target);
 
+my ($amtf, $adming) = check_admin_pages($ua, $target);
+
+check_components($ua, $target, $amtf, $adming);
 
 
 
