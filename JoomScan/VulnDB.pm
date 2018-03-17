@@ -2,7 +2,7 @@ package JoomScan::VulnDB;
 use warnings;
 use strict;
 use Exporter;
-
+use Logging qw(fprint);
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(check_components);
 
@@ -164,6 +164,38 @@ sub check_components {
     dprint("Enumeration component");
     fprint("components are not found");
   }
+}
+
+
+sub is_version_vulnerable{
+  my($target, $version) = @_;
+#start 
+    dprint("Core Joomla Vulnerability");
+    open(my $DB,"exploit/db/corevul.txt");
+    my $vver=substr($version, index($version, ' ')+1, 6);
+    $vver =~ s/ //g;
+    while( my $row = <$DB>)  {
+	chomp $row;
+	my $fv=substr($row, 0, index($row, '|'));
+	my $fd=substr($row, index($row, '|')+1, 1000);
+	my @sbug = split /,/, $fv;
+	foreach my $bs(@sbug){
+	    if(($bs =~ m/$vver/i) && (substr($vver, 0, 1) eq substr($bs, 0, 1))){
+		$fd =~ s/\$target/$target/g;
+		$fd =~ s/\\n/\r\n/g;
+		$fd =~ s/\|/\r\n\r\n/g;
+		$vtmp.="$fd\n\n";
+		$vvtf=1;
+		last;
+	    }
+	}
+    }
+    if($vvtf==1){
+	tprint("$vtmp");
+    }else{
+	fprint("Target Joomla core is not vulnerable");
+    }
+    close $DB;
 }
 
 1;
