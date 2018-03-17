@@ -1,20 +1,23 @@
-murphy@backbox:~/github/joomscan/core$ perl -c update.pl 
-syntax error at update.pl line 7, near "our "
-Global symbol "@EXPORT_OK" requires explicit package name at update.pl line 7.
-Can't use global @_ in "my" at update.pl line 10, near "= @_"
-Global symbol "$ua" requires explicit package name at update.pl line 11.
-syntax error at update.pl line 23, near "}"
-update.pl had compilation errors.
-murphy@backbox:~/github/joomscan/core$ perl -c update.pl 
-update.pl syntax OK
-murphy@backbox:~/github/joomscan/core$ git rm update.pl
-error: the following file has local modifications:
-    core/update.pl
-(use --cached to keep the file, or -f to force removal)
-murphy@backbox:~/github/joomscan/core$ git rm -f  update.pl
-rm 'core/update.pl'
-murphy@backbox:~/github/joomscan/core$ ls
-report.pl
-murphy@backbox:~/github/joomscan/core$ git rm report.pl
-rm 'core/report.pl'
-murphy@backbox:~/github/joomscan/core$ 
+package JoomScan::Update;
+use warnings;
+use strict;
+
+sub lookup_new_version {
+  my ($ua, $version) = @_;
+  print "\n[+] Checking newest version\n";
+
+  my $response = $ua->get('http://raw.githubusercontent.com/rezasp/joomscan/master/version');
+
+  if($response->is_success){
+    if($response->decoded_content !~ /$version/){
+      print "\n[!] New version available on http://github.com/rezasp/joomscan \n\n";
+    }else {
+      print "\n[!] No new version available\n\n";
+
+    }
+  }else{
+    print "\nNetwork error!\n";
+  }
+}
+
+1;
