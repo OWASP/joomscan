@@ -1,4 +1,6 @@
 package JoomScan::Report;
+use Term::ANSIColor;
+
 use warnings;
 use strict;
 use MIME::Base64;

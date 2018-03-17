@@ -22,28 +22,29 @@
 use warnings;
 use strict;
 
-# TODO make it work on windows again
-# system(($^O eq 'MSWin32') ? 'cls' : 'clear');
-# use if $^O eq "MSWin32", Win32::Console::ANSI;
 use Term::ANSIColor;
 use Getopt::Long;
 use LWP::UserAgent;
-use LWP::Simple;
 use Cwd;
 
 use JoomScan::Check qw(check_reg check_robots_txt check_path_disclosure
-		    check_misconfiguration check_error_logs
-		    check_dirlisting check_debug_mode
-		    check_admin_pages check_backups check_configs);
+		       check_misconfiguration check_error_logs
+		       check_dirlisting check_debug_mode
+		       check_admin_pages check_backups check_configs
+		       detect_joomla_version);
+use JoomScan::VulnDB qw(check_components check_for_vulnerable_version);
+use JoomScan::Report qw(gen_report);
+use JoomScan::Update qw(lookup_new_version);
+use JoomScan::Logging;
 
-use JoomScan::VulnDB qw(check_components);
-my $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##;
+my $mepath = Cwd::realpath($0);
+$mepath =~ s#/[^/\\]*$##;
 
 
 $SIG{INT} = \&interrupt;
 sub interrupt {
     fprint("\nShutting Down , Interrupt by user");
-    do "$mepath/core/report.pl";
+    #do "$mepath/core/report.pl";
     print color("reset");
     exit 0;
 }
@@ -94,11 +95,6 @@ sub print_with_color {
   print(color(reset));
 }
 
-sub with_color_str {
-  my ($color, $fn, @params) = @_;
-  return color($color). $fn->(@params) . color("reset");
-}
-
 sub partial {
   my ($fn, @args) = @_;
   sub {
@@ -128,7 +124,6 @@ sub banner {
 sub usage {
   print <<EOF
 Usage:
- joomscan.pl <target>
  joomscan.pl -u http://target.com/joomla
 Options:
  joomscan.pl --help
@@ -175,10 +170,10 @@ EOF
   exit(0);
 }
 
-sub update
+sub check_update
 {
-  #FIXME
-    do "$mepath/core/update.pl";
+  lookup_new_version();
+  exit(0);
 }
 
 my $enum_components = 0;
@@ -197,7 +192,7 @@ GetOptions(
   'enumerate-components|ec' => \$enum_components,
   'random-agent|r'   => \$use_random_agent,
   'user-agent|a=s' => \$agent,
-  'timeout=s' => \$timeout,
+  'timeout=i' => \$timeout,
   'cookie=s' => \$cookie,
   'u|url=s' => \$target,
   'version' => sub { print "\n\nVersion : $version\n\n";exit; }
@@ -235,10 +230,15 @@ check_debug_mode($ua, $target);
 check_backups($ua, $target);
 check_configs($ua, $target);
 
+my $joom_version = detect_joomla_version($ua, $target);
+check_for_vulnerable_version($target, $joom_version);
+
 my ($amtf, $adming) = check_admin_pages($ua, $target);
-
-check_components($ua, $target, $amtf, $adming);
-
-
+if($enum_components){
+  check_components($ua, $target, $amtf, $adming);
+}
+my ($dlog, $tflog, $log) = JoomScan::Logging::get_logs();
+gen_report($target, $codename, $version, $joom_version,
+	   $log, $dlog, $tflog);
 
 END{ print color("reset"); }

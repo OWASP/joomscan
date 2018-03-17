@@ -2,6 +2,7 @@ package JoomScan::Logging;
 use warnings;
 use strict;
 use Exporter;
+use Term::ANSIColor;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(dprint fprint tprint);

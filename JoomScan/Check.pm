@@ -2,6 +2,7 @@ package JoomScan::Check;
 use warnings;
 use strict;
 use Exporter;
+use LWP::Simple;
 use JoomScan::Logging qw(dprint tprint fprint);
 
 our @ISA = qw(Exporter);
@@ -144,7 +145,7 @@ sub check_error_logs {
   my @error = ('error.log','error_log','php-scripts.log',
 	       'php.errors','php5-fpm.log','php_errors.log','debug.log');
   foreach my $er (@error) {
-    if (my ($content_type, $doc_length, $mod_time, $expires, $server) =head("$target/$er")) {
+    if (my ($content_type, $doc_length, $mod_time, $expires, $server) = head("$target/$er")) {
       if ($content_type !~ m/text\/html/i) {
         tprint("$er path :  $target/$er\n");
         $ertf=1;
