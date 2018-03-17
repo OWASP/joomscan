@@ -22,10 +22,12 @@
 use warnings;
 use strict;
 
-use Term::ANSIColor;
+use Cwd;
 use Getopt::Long;
 use LWP::UserAgent;
-use Cwd;
+use Term::ANSIColor;
+use open ':std', ':encoding(UTF-8)';
+use utf8;
 
 use JoomScan::Check qw(check_reg check_robots_txt check_path_disclosure
 		       check_misconfiguration check_error_logs
