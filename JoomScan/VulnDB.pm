@@ -94,8 +94,7 @@ sub check_components {
 	$sourcer =~ /type=\"component\" version=\"(.*?)\"/;
 	my $comversion = $1;
 	$tmp.="Installed version : $comversion\n";
-
-				}
+      }
 
       open(my $FB,"exploit/db/comvul.txt");
       while( my $row = <$FB>)  {
