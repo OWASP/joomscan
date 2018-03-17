@@ -42,13 +42,10 @@ use JoomScan::Logging;
 my $mepath = Cwd::realpath($0);
 $mepath =~ s#/[^/\\]*$##;
 
-
 $SIG{INT} = \&interrupt;
 sub interrupt {
     fprint("\nShutting Down , Interrupt by user");
-    #do "$mepath/core/report.pl";
-    print color("reset");
-    exit 0;
+    exit(0);
 }
 
 
