@@ -8,7 +8,8 @@ our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(check_reg check_robots_txt check_path_disclosure
 		    check_misconfiguration check_error_logs
 		    check_dirlisting check_debug_mode
-		    check_admin_pages check_backups check_configs);
+		    check_admin_pages check_backups check_configs
+		    detect_joomla_version);
 
 sub check_reg {
   my ($ua, $target) = @_;

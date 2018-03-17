@@ -12,17 +12,18 @@ my $reportencode = 'PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCjxoZWFkPg0KCTx0aXRsZT4gJHRh
 
 
 sub gen_report {
-  my ($target, $codename, $prog_version, $target_version, $stime, $log, $dlog_r, $tflog_r, $can_regexp) = @_;
+  my ($target, $codename, $prog_version, $target_version, $log, $dlog_r, $tflog_r) = @_;
   $target="$target/";
   my @dlog = @$dlog_r;
   my @tflog = @$tflog_r;
   my $html = decode_base64($reportencode);
   #localtime
   my @weekday = ("Sunday", "Monday", "Tuesday", "Wednesday", "thursday", "Friday", "Saturday");
-  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();;
+  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
   $year = $year + 1900;
   $mon += 1;
   my $ftime = "$mday/$mon/$year $hour:$min:$sec $weekday[$wday]";
+  my $stime="$year-$mon-$mday $hour:$min:$sec $weekday[$wday]";
 
   #replace info
   $html =~ s/\$target/$target/g;
@@ -74,9 +75,6 @@ sub gen_report {
     }
 
     $tflog[$i]  =~ s/1337false//g;
-    if ($can_regexp) {
-      $tflog[$i]  =~ s( (\$RE{URI}{HTTP}) ) (<a href="$1" target="_blank" style="color:inherit">$1</a>)gx ;
-    }
     $tflog[$i]  =~ s/\[\+\+\] //g;
     $tbody =~ s/\$color/$color/g;
   

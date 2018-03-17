@@ -2,7 +2,7 @@ package JoomScan::VulnDB;
 use warnings;
 use strict;
 use Exporter;
-use Logging qw(fprint);
+use JoomScan::Logging qw(fprint);
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(check_components);
 
@@ -166,7 +166,7 @@ sub check_components {
 }
 
 
-sub is_version_vulnerable{
+sub is_version_vulnerable {
   my($target, $version) = @_;
   #start 
   dprint("Core Joomla Vulnerability");

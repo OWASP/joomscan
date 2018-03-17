@@ -9,6 +9,11 @@ our @EXPORT_OK = qw(dprint fprint tprint);
 my  (@dlog, @tflog, $log);
 $log = "";
 
+sub get_logs {
+  # This is a bandaid to remove global variables
+  return (\@dlog, \@tflog, $log);
+}
+
 sub dprint{
   my ($in) = @_;
   $in =~ s/\/\//\//g;
