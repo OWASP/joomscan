@@ -127,6 +127,7 @@ sub usage {
   print <<EOF
 Usage:
  joomscan.pl -u http://target.com/joomla
+ joomscan.pl --update
 Options:
  joomscan.pl --help
 
@@ -174,7 +175,8 @@ EOF
 
 sub check_update
 {
-  lookup_new_version();
+  my ($ua, $version) = @_;
+  lookup_new_version($ua, $version);
   exit(0);
 }
 
@@ -189,7 +191,7 @@ my $with_cyan = partial(\&print_with_color, 'cyan');
 
 GetOptions(
   'help|h' => partial($with_cyan, \&help),
-  'update' => \&update,
+  'update' => partial(\&check_update, create_user_agent($uagnt_labels[0])),
   'about' => partial($with_cyan, \&about),
   'enumerate-components|ec' => \$enum_components,
   'random-agent|r'   => \$use_random_agent,

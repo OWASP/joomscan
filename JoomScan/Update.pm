@@ -1,6 +1,10 @@
 package JoomScan::Update;
 use warnings;
 use strict;
+use Exporter;
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw(lookup_new_version);
+
 
 sub lookup_new_version {
   my ($ua, $version) = @_;
