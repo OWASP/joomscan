@@ -32,17 +32,17 @@ This Project is being faster than ever and updated with the latest Joomla vulner
 
     Usage:	joomscan.pl [options]
 
-    --url | -u <URL>                         |   The Joomla URL/domain to scan.
-    --enumerate-components          | -ec    |   Try to enumerate components.
+    --url | -u <URL>                |   The Joomla URL/domain to scan.
+    --enumerate-components | -ec    |   Try to enumerate components.
 
-    --cookie <String>                       |   Set cookie.
-    --user-agent | -a <user-agent>   |   Use the specified User-Agent.
-    --random-agent | -r                   |   Use a random User-Agent.
-    --timeout <time-out>                  |   set timeout.
-    --about                                      |   About Author
-    --update                                    |   Update to the latest version.
-    --help | -h                                 |   This help screen.
-    --version                                   |   Output the current version and exit.
+    --cookie <String>               |   Set cookie.
+    --user-agent | -a <user-agent>  |   Use the specified User-Agent.
+    --random-agent | -r             |   Use a random User-Agent.
+    --timeout <time-out>            |   set timeout.
+    --about                         |   About Author
+    --update                        |   Update to the latest version.
+    --help | -h                     |   This help screen.
+    --version                       |   Output the current version and exit.
 
 
 # OWASP JOOMSCAN EXAMPLES
