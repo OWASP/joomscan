@@ -3,7 +3,7 @@
 #            --------------------------------------------------
 #                            OWASP JoomScan
 #            --------------------------------------------------
-#        Copyright (C) <2017>
+#        Copyright (C) <2018>
 #
 #        This program is free software: you can redistribute it and/or modify
 #        it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@
 
 
 $author="Mohammad Reza Espargham , Ali Razmjoo";$author.="";
-$version="0.0.5";$version.="";
-$codename="KLOT";$codename.="";
-$update="2018/03/13";$update.="";
+$version="0.0.6";$version.="";
+$codename="#BHUSA";$codename.="";
+$update="2018/08/08";$update.="";
 $mmm=0;
 
 system(($^O eq 'MSWin32') ? 'cls' : 'clear');
@@ -35,7 +35,6 @@ use LWP::UserAgent;
 use LWP::Simple;
 use Cwd;                                                                       
 $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##; 
-
 $SIG{INT} = \&interrupt;
 sub interrupt {
     fprint("\nShutting Down , Interrupt by user");
@@ -45,8 +44,10 @@ sub interrupt {
 }
 do "$mepath/core/header.pl";
 do "$mepath/core/main.pl";
+do "$mepath/modules/waf_detector.pl";
 do "$mepath/core/ver.pl";
 do "$mepath/exploit/verexploit.pl";
+do "$mepath/exploit/com_joomanager.pl";
 do "$mepath/modules/pathdisclure.pl";
 do "$mepath/modules/debugmode.pl";
 do "$mepath/modules/dirlisting.pl";

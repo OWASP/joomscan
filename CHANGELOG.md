@@ -1,3 +1,11 @@
+OWASP JoomScan 0.0.6 [#BHUSA]
+============
+* Updated vulnerability databases
+* Added new module: Firewall Detector (supports detection of [CloudFlare, Incapsula, Shieldfy, Mod_Security])
+* Added exploit for com_joomanager
+* Updated list of common log paths
+* A few enhancements
+
 OWASP JoomScan 0.0.5 [KLOT]
 ============
 * Update components database

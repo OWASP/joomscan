@@ -1,4 +1,4 @@
-![Version 0.0.5](https://img.shields.io/badge/Version-0.0.5-green.svg)
+![Version 0.0.6](https://img.shields.io/badge/Version-0.0.6-green.svg)
 ![perl](https://img.shields.io/badge/Perl-5.x-yellow.svg)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-red.svg)](https://github.com/rezasp/joomscan/blob/master/LICENSE.md)
 [![Twitter](https://img.shields.io/badge/Twitter-@OWASP_JoomScan-blue.svg)](http://twitter.com/OWASP_JoomScan)
