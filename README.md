@@ -13,12 +13,19 @@
 OWASP JoomScan Project
 ======
 
-OWASP JoomScan  (short for [Joom]la Vulnerability [Scan]ner) is an opensource project in perl programming language to detect Joomla CMS vulnerabilities and analysis them.
+OWASP Joomla! Vulnerability Scanner (JoomScan) is an open source project, developed with the aim of automating the task of vulnerability detection and reliability assurance in Joomla CMS deployments. Implemented in Perl, this tool enables seamless and effortless scanning of Joomla installations, while leaving a minimal footprint with its lightweight and modular architecture. It not only detects known offensive vulnerabilities, but also is able to detect many misconfigurations and admin-level shortcomings that can be exploited by adversaries to compromise the system. Furthermore, OWASP JoomScan provides a user-friendly interface and compiles the final reports in both text and HTML formats for ease of use and minimization of reporting overheads.
+OWASP JoomScan is included in Kali Linux distributions.
 
 ### WHY OWASP JOOMSCAN  ?
-
-If you want to do a penetration test on a Joomla CMS, OWASP JoomScan is Your best shot ever!
-This Project is being faster than ever and updated with the latest Joomla vulnerabilities.
+Automated ...
+*Version enumerator
+*Vulnerability enumerator (based on version)
+*Components enumerator (1209 most popular by default)
+*Components vulnerability enumerator (based on version)(+1030 exploit)
+*Firewall detector
+*Reporting to Text & HTML output
+*Finding common log files
+*Finding common backup files
 
 
 # INSTALL
@@ -45,7 +52,7 @@ This Project is being faster than ever and updated with the latest Joomla vulner
     --version                       |   Output the current version and exit.
 
 
-# OWASP JOOMSCAN EXAMPLES
+# OWASP JOOMSCAN USAGE EXAMPLES
 
 Do default checks...<br>
 ```perl joomscan.pl --url www.example.com```<br>
