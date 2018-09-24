@@ -3,7 +3,6 @@ dprint("Detecting Joomla Version");
 
 $ua->timeout(60);
 
-
 my $response = $ua->get("$target");
 if (!$response->is_success) {
     print color("red");

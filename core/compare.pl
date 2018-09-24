@@ -14,7 +14,7 @@
    
    		# Add missing version parts if one string is shorter than the other
    		# i.e. 0 should be lt 0.2.1 and not equal, so we append .0
-   		# -> 0.0.0 <=> 0.2.1 -> -1
+   		# -> 0.0.0 <=> 0.2.1 -> -1 
    		push( @v1, 0 ) unless defined( $v1[$i] );
    		push( @v2, 0 ) unless defined( $v2[$i] );
    		if ( int( $v1[$i] ) > int( $v2[$i] ) ) {

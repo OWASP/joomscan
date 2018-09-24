@@ -2,7 +2,7 @@ OWASP JoomScan 0.0.7 [Self Challenge]
 ============
 * com_joomanager exploiter removed
 * Added new module: Local File Disclosure vulnerability detector (Supports detection of [com_joomanager,s5_media_player,com_hdflvplayer,com_macgallery,com_cckjseblod,fsave,com_portfolio,com_picsell,captcha,com_rsfiles,com_addproperty,com_aceftp,com_jtagmembersdirectory,com_facegallery,com_docman,mod_dvfoldercontent,com_contushdvideoshare,com_jetext,com_product_modul,wddownload,com_community,com_download-monitor])
-* Updated  module: Firewall Detector (supports detection of [CloudFlare, Incapsula, Shieldfy, Mod_Security and 28 other modules])
+* Updated  module: Firewall Detector (supports detection of [CloudFlare, Incapsula, Shieldfy, Mod_Security and 28 other modules ])
 * Added exploit for jckeditor
 * Updated list of components
 * A few enhancements
