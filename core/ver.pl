@@ -1,7 +1,11 @@
 #start Version finder
 dprint("Detecting Joomla Version");
 
+<<<<<<< HEAD
 $ua->timeout(60);
+=======
+$ua->timeout($timeout);
+>>>>>>> origin/master
 
 my $response = $ua->get("$target");
 if (!$response->is_success) {
