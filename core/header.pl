@@ -32,6 +32,7 @@ if(!defined $ARGV[0]){
     exit(1);
 }
 $cookie=1;
+$proxy=1;
 #Start help Function
 sub help
 {
@@ -49,6 +50,11 @@ Usage:	$0 [options]
 --user-agent | -a <User-Agent>  |   Use the specified User-Agent.
 --random-agent | -r             |   Use a random User-Agent.
 --timeout <Time-Out>            |   Set timeout.
+--proxy=PROXY                   |   Use a proxy to connect to the target URL
+           Proxy example: --proxy http://127.0.0.1:8080
+                                  https://127.0.0.1:443
+                                  socks://127.0.0.1:414
+                                  
 --about                         |   About Author
 --update                        |   Update to the latest version.
 --help | -h                     |   This help screen.
@@ -86,6 +92,7 @@ GetOptions(
   'random-agent|r'   => sub { $randomagent = 1 },
   'user-agent|a=s' => \$agent,
   'timeout=s' => \$timeout,
+  'proxy=s' => \$proxy,
   'cookie=s' => \$cookie,
   'u|url=s' => \$target,
   'version' => sub { print "\n\nVersion : $version\n\n";exit; },

@@ -1,9 +1,12 @@
-![Version 0.0.6](https://img.shields.io/badge/Version-0.0.6-green.svg)
-![perl](https://img.shields.io/badge/Perl-5.x-yellow.svg)
+![Version 0.0.7](https://img.shields.io/badge/Version-0.0.7-green.svg)
+![Perl](https://img.shields.io/badge/Perl-5.x-yellow.svg)
 [![GPLv3 License](https://img.shields.io/badge/License-GPLv3-red.svg)](https://github.com/rezasp/joomscan/blob/master/LICENSE.md)
 [![Twitter](https://img.shields.io/badge/Twitter-@OWASP_JoomScan-blue.svg)](http://twitter.com/OWASP_JoomScan)
 [![Leader](https://img.shields.io/badge/Twitter-@rezesp-blue.svg)](http://www.twitter.com/rezesp)
 [![Leader](https://img.shields.io/badge/Twitter-@Ali_Razmjo0-blue.svg)](http://www.twitter.com/Ali_Razmjo0)
+<br>
+[![Black Hat Arsenal USA](https://rawgit.com/toolswatch/badges/master/arsenal/usa/2018.svg)](http://www.toolswatch.org/2018/05/black-hat-arsenal-usa-2018-the-w0w-lineup/)
+[![Black Hat Arsenal ASIA](https://rawgit.com/toolswatch/badges/master/arsenal/asia/2018.svg)](http://www.toolswatch.org/2018/01/black-hat-arsenal-asia-2018-great-lineup/)
 
 
 <img src="https://raw.githubusercontent.com/rezasp/Trash/master/joomscan.png" width="200"><img src="https://raw.githubusercontent.com/rezasp/Trash/master/owasp.png" width="500">
@@ -82,6 +85,12 @@ Set random user-agent<br>
 or<br>
 ```perl joomscan.pl --url www.example.com -r```<br>
 <br>
+
+Set proxy<br>
+```perl joomscan.pl --url www.example.com --proxy http://127.0.0.1:8080```<br>
+or<br>
+```perl joomscan.pl -u www.example.com --proxy https://127.0.0.1:443```<br>
+<br><br>
 
 Update Joomscan...<br>
 ```perl joomscan.pl --update```<br><br>

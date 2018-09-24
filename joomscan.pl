@@ -22,15 +22,16 @@
 
 
 $author="Mohammad Reza Espargham , Ali Razmjoo";$author.="";
-$version="0.0.6";$version.="";
-$codename="#BHUSA";$codename.="";
-$update="2018/08/08";$update.="";
+$version="0.0.7";$version.="";
+$codename="Self Challenge";$codename.="";
+$update="2018/09/23";$update.="";
 $mmm=0;
 
 system(($^O eq 'MSWin32') ? 'cls' : 'clear');
 use if $^O eq "MSWin32", Win32::Console::ANSI;
 use Term::ANSIColor;
 use Getopt::Long;
+use LWP;
 use LWP::UserAgent;
 use LWP::Simple;
 use Cwd;                                                                       
@@ -45,9 +46,10 @@ sub interrupt {
 do "$mepath/core/header.pl";
 do "$mepath/core/main.pl";
 do "$mepath/modules/waf_detector.pl";
+do "$mepath/exploit/jckeditor.pl";
 do "$mepath/core/ver.pl";
 do "$mepath/exploit/verexploit.pl";
-do "$mepath/exploit/com_joomanager.pl";
+do "$mepath/exploit/com_lfd.pl";
 do "$mepath/modules/pathdisclure.pl";
 do "$mepath/modules/debugmode.pl";
 do "$mepath/modules/dirlisting.pl";

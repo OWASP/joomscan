@@ -60,6 +60,11 @@ $agent = $uagnt[ rand @uagnt ] if($randomagent==1);
 
 $ua->agent($agent);
 
+if($proxy!=1){
+    if($proxy =~ /^https?/ or $proxy =~ /^socks?/ or $proxy =~ /^ftp/){
+        $ua->proxy([qw(http https)] => $proxy);
+    }
+}
 
 $ua->cookie_jar({}) if($cookie!=1);
 $ua->default_header('Cookie'=> "$cookie") if($cookie!=1);
