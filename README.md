@@ -38,6 +38,10 @@ Automated ...<br>
     cd joomscan
     perl joomscan.pl
 
+For Docker installation
+
+    # Build the docker image
+    docker build -t rezasp/joomscan .
 
 # JOOMSCAN ARGUMENTS
 
