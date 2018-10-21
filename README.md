@@ -38,6 +38,16 @@ Automated ...<br>
     cd joomscan
     perl joomscan.pl
 
+For Docker installation and usage
+
+    # Build the docker image
+    docker build -t rezasp/joomscan .
+
+    # Run a new docker container with reports directory mounted at the host
+    docker run -it -v /path/to/reports:/home/joomscan/reports --name joomscan_cli rezasp/joomscan
+
+    # For accessing the docker container you can run the following command
+    docker run -it -v /path/to/reports:/home/joomscan/reports --name joomscan_cli --entrypoint /bin/bash rezasp/joomscan
 
 # JOOMSCAN ARGUMENTS
 
