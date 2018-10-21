@@ -44,10 +44,10 @@ For Docker installation and usage
     docker build -t rezasp/joomscan .
 
     # Run a new docker container with reports directory mounted at the host
-    docker run -v /path/to/reports:/home/joomscan/reports --name joomscan_cli rezasp/joomscan
+    docker run -it -v /path/to/reports:/home/joomscan/reports --name joomscan_cli rezasp/joomscan
 
     # For accessing the docker container you can run the following command
-    docker run -v /path/to/reports:/home/joomscan/reports --name joomscan_cli --entrypoint /bin/bash rezasp/joomscan
+    docker run -it -v /path/to/reports:/home/joomscan/reports --name joomscan_cli --entrypoint /bin/bash rezasp/joomscan
 
 # JOOMSCAN ARGUMENTS
 
