@@ -1,5 +1,5 @@
 FROM perl:5-slim
-LABEL maintainer="Mostafa Hussein <mostafa.hussein91@gmail.com>"
+LABEL author="Mostafa Hussein <mostafa.hussein91@gmail.com>"
 COPY . /home/joomscan
 WORKDIR /home/joomscan
 RUN adduser joomscan --disabled-password --disabled-login --gecos "" --no-create-home --home /home/joomscan && chown joomscan:joomscan /home/joomscan -R
