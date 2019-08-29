@@ -22,7 +22,7 @@ if($target =~ /^https:\/\//) {
     print color("red");
     print "[+] Target uses HTTPS, but module LWP::Protocol::https is not available!\n\n";
     print color("reset");
-    exit (1);
+    if (!$urlfile) {exit (1);} else {next;}
   }
 }
 

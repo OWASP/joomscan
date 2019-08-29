@@ -24,6 +24,7 @@ if(!defined $ARGV[0]){
     printf "\n   Usage: 
     	joomscan.pl <target>
    	joomscan.pl -u http://target.com/joomla
+      joomscan.pl -m targets.txt
    
    
       Options: 
@@ -44,7 +45,10 @@ Help :
 Usage:	$0 [options]
 
 --url | -u <URL>                |   The Joomla URL/domain to scan.
+--mass | -m <filename>          |   Cycle through URLs provided in txt file
 --enumerate-components | -ec    |   Try to enumerate components.
+--joomla-version | -jv          |   Output target Joomla version and exit without further checks
+--no-report | -nr               |   Do not produce a report  
 
 --cookie <String>               |   Set cookie.
 --user-agent | -a <User-Agent>  |   Use the specified User-Agent.
@@ -54,11 +58,12 @@ Usage:	$0 [options]
            Proxy example: --proxy http://127.0.0.1:8080
                                   https://127.0.0.1:443
                                   socks://127.0.0.1:414
-                                  
+                       
 --about                         |   About Author
 --update                        |   Update to the latest version.
 --help | -h                     |   This help screen.
---version                       |   Output the current version and exit.
+--version                       |   Output the current joomscan version and exit.
+
 
 ";
 	print color("reset");
@@ -89,16 +94,19 @@ GetOptions(
   'update' => sub { update(0) },
   'about' => sub { about(0) },
   'enumerate-components|ec'   => sub { $components = 1 },
+  'no-report|nr' => sub { $noreport = 1 },
+  'joomla-version|jv' => sub { $jversion = 1 },
   'random-agent|r'   => sub { $randomagent = 1 },
   'user-agent|a=s' => \$agent,
   'timeout=s' => \$timeout,
   'proxy=s' => \$proxy,
   'cookie=s' => \$cookie,
   'u|url=s' => \$target,
+  'm|mass=s' => \$urlfile,
   'version' => sub { print "\n\nVersion : $version\n\n";exit; },
 
 );
-if($target !~ /\S/){
+if(($target !~ /\S/)&&($urlfile !~ /\S/)){
   print color("red");
   print "[+] No target specified!\n\n";
   print color("reset");
