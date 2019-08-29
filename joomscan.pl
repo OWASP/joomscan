@@ -39,28 +39,46 @@ $mepath = Cwd::realpath($0); $mepath =~ s#/[^/\\]*$##;
 $SIG{INT} = \&interrupt;
 sub interrupt {
     fprint("\nShutting Down , Interrupt by user");
-    do "$mepath/core/report.pl";
+    do "$mepath/core/report.pl" if($noreport!=1);
     print color("reset");
     exit 0;
 }
+
 do "$mepath/core/header.pl";
+
+if ($urlfile) {
+   open(my $ufh, '<:encoding(UTF-8)', $urlfile)
+     or die "Could not open file '$urlfile' $!";
+    
+   while (my $row = <$ufh>) {
+     chomp $row;
+     $target = $row;
+     run_checks(0);
+   }   
+} else {
+   run_checks(0);
+}
+
+sub run_checks {
 do "$mepath/core/main.pl";
-do "$mepath/modules/waf_detector.pl";
-do "$mepath/exploit/jckeditor.pl";
+do "$mepath/modules/waf_detector.pl" if($jversion!=1);
+do "$mepath/exploit/jckeditor.pl"if($jversion!=1);
 do "$mepath/core/ver.pl";
-do "$mepath/exploit/verexploit.pl";
-do "$mepath/exploit/com_lfd.pl";
-do "$mepath/modules/pathdisclure.pl";
-do "$mepath/modules/debugmode.pl";
-do "$mepath/modules/dirlisting.pl";
-do "$mepath/modules/missconfig.pl";
-do "$mepath/modules/cpfinder.pl";
-do "$mepath/modules/robots.pl";
-do "$mepath/modules/backupfinder.pl";
-do "$mepath/modules/errfinder.pl";
-do "$mepath/modules/reg.pl";
-do "$mepath/modules/configfinder.pl";
+do "$mepath/exploit/verexploit.pl" if($jversion!=1);
+do "$mepath/exploit/com_lfd.pl" if($jversion!=1);
+do "$mepath/modules/pathdisclure.pl" if($jversion!=1);
+do "$mepath/modules/debugmode.pl" if($jversion!=1);
+do "$mepath/modules/dirlisting.pl" if($jversion!=1);
+do "$mepath/modules/missconfig.pl" if($jversion!=1);
+do "$mepath/modules/cpfinder.pl" if($jversion!=1);
+do "$mepath/modules/robots.pl" if($jversion!=1);
+do "$mepath/modules/backupfinder.pl" if($jversion!=1);
+do "$mepath/modules/errfinder.pl" if($jversion!=1);
+do "$mepath/modules/reg.pl" if($jversion!=1);
+do "$mepath/modules/configfinder.pl" if($jversion!=1);
 do "$mepath/exploit/components.pl" if($components==1);
 
-do "$mepath/core/report.pl";
+do "$mepath/core/report.pl" if($noreport!=1);
 print color("reset");
+}
+
