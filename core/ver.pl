@@ -8,7 +8,7 @@ if (!$response->is_success) {
     print color("red");
     print "[++] The target is not alive!\n\n";
     print color("reset");
-    exit 0;
+    if (!$urlfile) {exit 0;} else {next;}
 }
 
 $ua->timeout($timeout);
