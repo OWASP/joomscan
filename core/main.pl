@@ -94,7 +94,7 @@ sub tprint{
     $tflog[$#tflog]=$in;
     $in="[++] $in\n";
     $log .= $in;
-    print color("yellow");
+    print color("red");
     print "$in";
     print color("blue");
 }
@@ -107,7 +107,7 @@ sub fprint{
     $tflog[$#tflog]="1337false$in";
     $in="[++] $in\n";
     $log .= $in;
-    print color("red");
+    print color("yellow");
     print "$in";
     print color("blue");
 }
