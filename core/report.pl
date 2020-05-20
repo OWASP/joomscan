@@ -49,7 +49,7 @@ for($i=0;$i<=$#dlog;$i++){
   $tbody=$tmpbody;
   $tbody =~ s/\$i/$i/g;
   $tflog[$i] =~ s/\n/\n\<br\>/g;
-  if($tflog[$i] =~ m/1337false/i){$color="red";}else{$color="green";}
+  if($tflog[$i] =~ m/1337false/i){$color="green";}else{$color="red";}
   $tflog[$i]  =~ s/1337false//g;
   if ($can_regexp) {
     $tflog[$i]  =~ s( ($RE{URI}{HTTP}) ) (<a href="$1" target="_blank" style="color:inherit">$1</a>)gx ;
