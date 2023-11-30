@@ -20,6 +20,8 @@ OWASP Joomla! Vulnerability Scanner (JoomScan) is an open source project, develo
 <br>
 OWASP JoomScan is included in Kali Linux distributions.
 
+* **Read More**: https://www.secologist.com/open-source-projects
+
 ### WHY OWASP JOOMSCAN  ?
 Automated ...<br>
   *Version enumerator<br>
