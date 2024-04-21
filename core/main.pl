@@ -16,7 +16,7 @@ if($target =~ /^https:\/\//) {
   if($@) { $can_https=0; }
 
   if ($can_https) {
-    $ua->ssl_opts( 'verify_hostname' => 0 );
+    $ua->ssl_opts('SSL_verify_mode' => 0x00,  'verify_hostname' => 0 );
     push @{ $ua->protocols_allowed }, 'https';
   } else {
     print color("red");
