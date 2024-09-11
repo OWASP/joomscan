@@ -1,4 +1,4 @@
-FROM perl:5-slim
+FROM perl:5.41.2-slim
 COPY . /home/joomscan
 WORKDIR /home/joomscan
 RUN adduser joomscan --disabled-password --disabled-login --gecos "" --no-create-home --home /home/joomscan && chown joomscan:joomscan /home/joomscan -R
